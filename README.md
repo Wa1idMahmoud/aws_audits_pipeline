@@ -82,7 +82,7 @@ Lists all security groups in your account.
 Checks each security group’s inbound rules to see if any rules allow traffic from any IP address (0.0.0.0/0).
 If any such rules are found, they are printed as potential security risks.
 
-How to Run the Scripts in GitHub Actions
+## How to Run the Scripts in GitHub Actions
 
 Once you add these scripts to your repository (in the aws-audits directory as defined earlier).
 The GitHub Actions pipeline will automatically execute them as part of your CI/CD process.
