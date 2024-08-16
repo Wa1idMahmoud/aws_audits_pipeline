@@ -25,6 +25,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install boto3  # Install boto3 explicitly
+          python3 -m pip show boto3  # Verify boto3 installation
 
       - name: Configure AWS credentials
         env:
