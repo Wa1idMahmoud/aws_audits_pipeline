@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight UTC
+    - cron: "0 11 * * *"  # Runs daily at noon UK time
 
 jobs:
   setup:
@@ -68,6 +68,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run Security Group audit
+      - name: Run Security Group audit across all regions
         run: |
           python aws-audits/sg_audit.py
