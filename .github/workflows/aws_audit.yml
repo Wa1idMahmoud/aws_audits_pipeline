@@ -32,6 +32,14 @@ jobs:
           cd boto3
           python -m pip install -r requirements.txt
           python -m pip install -e .
+          echo "PYTHON_PATH=$(which python3)" >> $GITHUB_ENV
+     
+      # Debug: Print Python version and path
+      - name: Check Python version and path
+        run: |
+          echo "Python Path: $PYTHON_PATH"
+          $PYTHON_PATH --version
+          $PYTHON_PATH -c "import boto3; print(boto3.__file__)"
 
       # Configure AWS credentials from GitHub secrets
       - name: Configure AWS credentials
