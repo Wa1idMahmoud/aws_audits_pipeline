@@ -1,4 +1,4 @@
-import boto3
+
 
 def audit_iam_policies():
     iam = boto3.client('iam')
