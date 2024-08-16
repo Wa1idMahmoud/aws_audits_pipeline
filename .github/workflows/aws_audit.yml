@@ -23,10 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv venv  # Create a virtual environment
-          source venv/bin/activate  # Activate the virtual environment
           python -m pip install --upgrade pip
-          pip install boto3
+          pip install boto3  # Install boto3 directly
 
       - name: Configure AWS credentials
         env:
@@ -34,7 +32,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         run: |
-          source venv/bin/activate  # Ensure the environment is activated
           aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
           aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
           aws configure set default.region $AWS_DEFAULT_REGION
@@ -49,8 +46,7 @@ jobs:
 
       - name: Run IAM audit
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          python aws-audits/iam_audit.py
+          python aws-audits/iam_audit.py  # Run the IAM audit script
 
   s3-audit:
     runs-on: ubuntu-latest
@@ -62,8 +58,7 @@ jobs:
 
       - name: Run S3 audit
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          python aws-audits/s3_audit.py
+          python aws-audits/s3_audit.py  # Run the S3 audit script
 
   sg-audit:
     runs-on: ubuntu-latest
@@ -75,5 +70,4 @@ jobs:
 
       - name: Run Security Group audit across all regions
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          python aws-audits/sg_audit.py
+          python aws-audits/sg_audit.py  # Run the Security Group audit script
