@@ -63,6 +63,9 @@ jobs:
       # Run the IAM audit script using the Python environment where boto3 is installed
       - name: Run IAM audit
         run: |
+          python3 -m pip install --upgrade pip  # Upgrade pip to the latest version
+          python3 -m pip install boto3          # Install boto3
+          python3 -m pip show boto3             # Verify boto3 installation
           python3 /home/runner/work/aws_audits_pipeline/aws_audits_pipeline/aws-audits/iam_audit.py
 
   s3-audit:
